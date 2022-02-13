@@ -100,36 +100,33 @@ const arrToStr = (arr) => {
 // ------------------------
 
 const letterCounter = (str) => {
-    let h=""
-    let arr =[];
-    var counts = 0;
-    let l=str.split('')
-    l.push(' ')
-    let a=l[0]
-    
-    l.forEach((char,i) => {
-      console.log()
-     if (a==char){
-       counts+=1
-     }else if(char==" "){ 
-       arr.push(`${a}`+counts)
-      a=l[i+1]
-      counts=0
-    
-    }else {
+  let l = str.split(' ')
+  const count = {};
+  let arr=[];
 
-        arr.push(`${a}`+counts)
-      a=char
-      counts=1
-    
-    } 
-     
-    });
-    
-       let s=arr.join(" ")
-        return s
-    
+for (const element of l) {
+  let y = element.split('')
+  for (const element1 of y){
+if (count[element1]) {
+    count[element1] += 1;
+  } else {
+    count[element1] = 1;
   }
+  
+}
+}
+console.log(count)
+for (let val in count){
+ if (val =="s"||val =="d"||val =="f"){
+  arr.push(`${val}${count[val]}`)
+ }else {
+  arr.push(`${val}${count[val]} ` )
+ }
+
+}
+
+return arr.join('')
+}
 
 
 
